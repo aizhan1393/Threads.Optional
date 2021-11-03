@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Plane extends Thread{
+public class Plane extends Thread {
 
     private String name;
 
@@ -15,9 +15,9 @@ public class Plane extends Thread{
         return name;
     }
 
-    public void takeOff(List<RunwayTripLock> runwayTripLocks){
-        for(RunwayTripLock runwayTrip: runwayTripLocks){
-            if(!runwayTrip.isOccupied) {
+    public void takeOff(List<RunwayTripLock> runwayTripLocks) {
+        for (RunwayTripLock runwayTrip : runwayTripLocks) {
+            if (!runwayTrip.isOccupied) {
                 runwayTrip.takeOff();
             }
         }

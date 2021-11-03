@@ -9,7 +9,7 @@ public class RunwayTripLock {
     private Condition condition = lock.newCondition();
 
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -18,22 +18,19 @@ public class RunwayTripLock {
         this.name = name;
     }
 
-    public void takeOff(){
+    public void takeOff() {
         try {
             if (lock.tryLock()) {
                 isOccupied = true;
                 System.out.println("Plane began entering the runway trip!");
                 System.out.println("The runway trip " + getName() + " has taken the plane");
                 TimeUnit.SECONDS.sleep(3);
-            }
-            else {
+            } else {
                 lock.tryLock(3, TimeUnit.SECONDS);
             }
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             System.out.println("The plane has taken off");
             System.out.println("The runway trip " + getName() + " is free");
             isOccupied = false;
